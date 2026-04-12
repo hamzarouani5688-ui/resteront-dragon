@@ -1,0 +1,7 @@
+{
+  "name": "Golden Dragon Voice Ordering",
+  "description": "An authentic Chinese restaurant experience with a Gemini-powered voice ordering system, featuring a full menu and interactive cart.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
