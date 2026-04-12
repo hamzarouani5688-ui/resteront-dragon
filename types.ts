@@ -43,6 +43,15 @@ export interface Order {
   status: 'pending' | 'preparing' | 'ready' | 'delivered' | 'completed' | 'cancelled';
   createdAt: string;
   updatedAt: string;
+  readyAt?: string;
+  completedAt?: string;
+}
+
+export interface TableInfo {
+  id: string;
+  number: string;
+  status: 'free' | 'occupied';
+  orderId?: string;
 }
 
 export type ViewState = 'landing' | 'menu' | 'details' | 'success' | 'admin' | 'login';
