@@ -176,6 +176,11 @@ const App: React.FC = () => {
 
           {isMobileMenuOpen && (
             <div className="lg:hidden fixed inset-0 top-[73px] bg-background-dark/95 z-50 p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
+              <div className="flex gap-4 border-b border-white/10 pb-6">
+                <button onClick={() => setLang('en')} className={`px-4 py-2 rounded-xl text-sm font-bold border ${lang === 'en' ? 'bg-primary text-white border-primary' : 'bg-white/5 text-gray-400 border-white/10'}`}>EN</button>
+                <button onClick={() => setLang('fr')} className={`px-4 py-2 rounded-xl text-sm font-bold border ${lang === 'fr' ? 'bg-primary text-white border-primary' : 'bg-white/5 text-gray-400 border-white/10'}`}>FR</button>
+                <button onClick={() => setLang('ar')} className={`px-4 py-2 rounded-xl text-sm font-bold border ${lang === 'ar' ? 'bg-primary text-white border-primary' : 'bg-white/5 text-gray-400 border-white/10'}`}>AR</button>
+              </div>
               <button
                 onClick={() => {
                   setView('menu');
@@ -1056,13 +1061,13 @@ const App: React.FC = () => {
 
         <aside
           className={`
-            fixed lg:relative inset-0 lg:inset-auto z-50 lg:z-0
+            fixed lg:relative inset-y-0 end-0 z-50 lg:z-0
             w-full lg:w-[440px] h-full
-            bg-white dark:bg-surface-dark border-l border-gray-100 dark:border-white/5
-            fixed inset-y-0 end-0 z-50
-            w-full max-w-md bg-white dark:bg-background-dark shadow-2xl flex flex-col
-            transition-transform duration-500 ease-in-out
+            bg-white dark:bg-background-dark shadow-2xl lg:shadow-none border-l border-gray-100 dark:border-white/5
+            flex flex-col
+            transition-all duration-500 ease-in-out
             ${isMobileCartOpen ? 'translate-x-0' : 'translate-x-full rtl:-translate-x-full'}
+            lg:translate-x-0
           `}
         >
           <div className="p-6 md:p-8 border-b dark:border-white/5 flex items-center justify-between">
