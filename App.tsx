@@ -150,18 +150,18 @@ const App: React.FC = () => {
             <button onClick={() => setView('menu')} className="hover:text-primary transition-colors">{t(lang, 'nav.menu')}</button>
             <a href="#" className="hover:text-primary transition-colors">{t(lang, 'nav.about')}</a>
             <a href="#" className="hover:text-primary transition-colors">{t(lang, 'nav.contact')}</a>
-            {/* Language Switcher */}
-            <div className="flex gap-2">
-              <button onClick={() => setLang('en')} className={lang === 'en' ? 'text-primary' : ''}>EN</button>
-              <button onClick={() => setLang('fr')} className={lang === 'fr' ? 'text-primary' : ''}>FR</button>
-              <button onClick={() => setLang('ar')} className={lang === 'ar' ? 'text-primary' : ''}>AR</button>
-            </div>
             <button onClick={() => setView('login')} className="bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-white/10 transition-all">
               {t(lang, 'nav.staffLogin')}
             </button>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
+            <div className="flex bg-white/5 border border-white/10 rounded-xl p-1 shrink-0">
+               <button onClick={() => setLang('en')} className={`px-2 md:px-3 py-1.5 rounded-lg text-[10px] md:text-xs font-black transition-all ${lang === 'en' ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-gray-400 hover:text-white'}`}>EN</button>
+               <button onClick={() => setLang('fr')} className={`px-2 md:px-3 py-1.5 rounded-lg text-[10px] md:text-xs font-black transition-all ${lang === 'fr' ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-gray-400 hover:text-white'}`}>FR</button>
+               <button onClick={() => setLang('ar')} className={`px-2 md:px-3 py-1.5 rounded-lg text-[10px] md:text-xs font-black transition-all ${lang === 'ar' ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-gray-400 hover:text-white'}`}>AR</button>
+            </div>
+
             <button onClick={() => setView('menu')} className="hidden sm:flex bg-primary hover:bg-red-600 px-6 md:px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest shadow-xl shadow-primary/30 transition-all active:scale-95">
               {t(lang, 'nav.orderNow')}
             </button>
@@ -176,11 +176,6 @@ const App: React.FC = () => {
 
           {isMobileMenuOpen && (
             <div className="lg:hidden fixed inset-0 top-[73px] bg-background-dark/95 z-50 p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
-              <div className="flex gap-4 border-b border-white/10 pb-6">
-                <button onClick={() => setLang('en')} className={`px-4 py-2 rounded-xl text-sm font-bold border ${lang === 'en' ? 'bg-primary text-white border-primary' : 'bg-white/5 text-gray-400 border-white/10'}`}>EN</button>
-                <button onClick={() => setLang('fr')} className={`px-4 py-2 rounded-xl text-sm font-bold border ${lang === 'fr' ? 'bg-primary text-white border-primary' : 'bg-white/5 text-gray-400 border-white/10'}`}>FR</button>
-                <button onClick={() => setLang('ar')} className={`px-4 py-2 rounded-xl text-sm font-bold border ${lang === 'ar' ? 'bg-primary text-white border-primary' : 'bg-white/5 text-gray-400 border-white/10'}`}>AR</button>
-              </div>
               <button
                 onClick={() => {
                   setView('menu');
@@ -497,14 +492,23 @@ const App: React.FC = () => {
 
     return (
       <div className="bg-background-dark min-h-screen flex flex-col lg:flex-row text-white overflow-hidden">
-        <header className="lg:hidden h-16 shrink-0 border-b border-white/5 bg-surface-dark px-4 flex items-center justify-between z-50">
+        <header className="lg:hidden h-16 shrink-0 border-b border-white/5 bg-surface-dark px-4 flex items-center justify-between z-50 gap-4">
           <div className="flex items-center gap-2" onClick={() => setView('landing')}>
             <span className="material-icons-round text-primary">restaurant</span>
-            <span className="font-black tracking-tighter">{t(lang, 'admin.staffPanel')}</span>
+            <span className="font-black tracking-tighter shrink-0">{t(lang, 'admin.staffPanel')}</span>
           </div>
-          <button onClick={() => setIsAdminSidebarOpen(!isAdminSidebarOpen)} className="p-2 hover:bg-white/5 rounded-xl">
-            <span className="material-icons-round">{isAdminSidebarOpen ? 'close' : 'menu'}</span>
-          </button>
+
+          <div className="flex items-center gap-2">
+            <div className="flex bg-white/5 border border-white/10 rounded-xl p-1 shrink-0 scale-90">
+               <button onClick={() => setLang('en')} className={`px-2 py-1.5 rounded-lg text-[10px] font-black transition-all ${lang === 'en' ? 'bg-primary text-white' : 'text-gray-400 hover:text-white'}`}>EN</button>
+               <button onClick={() => setLang('fr')} className={`px-2 py-1.5 rounded-lg text-[10px] font-black transition-all ${lang === 'fr' ? 'bg-primary text-white' : 'text-gray-400 hover:text-white'}`}>FR</button>
+               <button onClick={() => setLang('ar')} className={`px-2 py-1.5 rounded-lg text-[10px] font-black transition-all ${lang === 'ar' ? 'bg-primary text-white' : 'text-gray-400 hover:text-white'}`}>AR</button>
+            </div>
+
+            <button onClick={() => setIsAdminSidebarOpen(!isAdminSidebarOpen)} className="p-2 hover:bg-white/5 rounded-xl shrink-0">
+              <span className="material-icons-round">{isAdminSidebarOpen ? 'close' : 'menu'}</span>
+            </button>
+          </div>
         </header>
 
         <aside
@@ -934,6 +938,11 @@ const App: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2 md:gap-4 shrink-0">
+          <div className="flex bg-white/10 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-1 shrink-0 scale-90 md:scale-100">
+             <button onClick={() => setLang('en')} className={`px-2 md:px-3 py-1.5 rounded-lg text-[10px] md:text-xs font-black transition-all ${lang === 'en' ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-gray-400 hover:text-white'}`}>EN</button>
+             <button onClick={() => setLang('fr')} className={`px-2 md:px-3 py-1.5 rounded-lg text-[10px] md:text-xs font-black transition-all ${lang === 'fr' ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-gray-400 hover:text-white'}`}>FR</button>
+             <button onClick={() => setLang('ar')} className={`px-2 md:px-3 py-1.5 rounded-lg text-[10px] md:text-xs font-black transition-all ${lang === 'ar' ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'text-gray-400 hover:text-white'}`}>AR</button>
+          </div>
           <img className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-primary/20" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200" alt="User" />
         </div>
       </header>
@@ -1063,11 +1072,10 @@ const App: React.FC = () => {
           className={`
             fixed lg:relative inset-y-0 end-0 z-50 lg:z-0
             w-full lg:w-[440px] h-full
-            bg-white dark:bg-background-dark shadow-2xl lg:shadow-none border-l border-gray-100 dark:border-white/5
-            flex flex-col
-            transition-all duration-500 ease-in-out
-            ${isMobileCartOpen ? 'translate-x-0' : 'translate-x-full rtl:-translate-x-full'}
-            lg:translate-x-0
+            bg-white dark:bg-card-dark border-l border-gray-100 dark:border-white/5
+            flex flex-col shadow-2xl lg:shadow-none
+            transition-transform duration-500 ease-in-out
+            ${isMobileCartOpen ? 'translate-x-0' : 'translate-x-full rtl:-translate-x-full lg:translate-x-0'}
           `}
         >
           <div className="p-6 md:p-8 border-b dark:border-white/5 flex items-center justify-between">
